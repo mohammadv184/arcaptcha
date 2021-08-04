@@ -17,5 +17,5 @@ interface Adapter
      * @param string $challenge_id
      * @return mixed
      */
-    public function submit(string $challenge_id):array;
+    public function submit(string $uri,string $challenge_id):array;
 }
