@@ -2,6 +2,7 @@
 
 namespace Mohammadv184\ArCaptcha;
 
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use Mohammadv184\ArCaptcha\Adapter\Http;
 
@@ -72,16 +73,16 @@ class ArCaptcha
      * Verify Captcha challenge id
      * @param string $challenge_id
      * @return bool
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function verify(string $challenge_id):bool
     {
         try {
-            $response = $this->http->submit($challenge_id);
-
-        }catch (RequestException $e){
+            $response = $this->http->submit('challenges/verify',$challenge_id);
+        }catch (GuzzleException $e){
             return false;
         }
-        return ((array)$response)['status'];
+        return $response['status'];
     }
 
 }
