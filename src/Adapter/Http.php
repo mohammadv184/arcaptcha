@@ -2,7 +2,6 @@
 
 namespace Mohammadv184\ArCaptcha\Adapter;
 
-
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use phpDocumentor\Reflection\Types\True_;
@@ -51,9 +50,9 @@ class Http implements Adapter
      * @return array
      * @throws GuzzleException
      */
-    public function submit(string $uri,string $challenge_id):array
+    public function submit(string $uri, string $challenge_id):array
     {
-        $response = $this->client->post($uri ,[
+        $response = $this->client->post($uri, [
             'json'=>[
                 'challenge_id' => $challenge_id,
                 'site_key' => $this->site_key,
@@ -61,6 +60,6 @@ class Http implements Adapter
             ]
         ]);
 
-        return json_decode($response->getBody()->getContents(),true);
+        return json_decode($response->getBody()->getContents(), true);
     }
 }

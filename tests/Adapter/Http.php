@@ -22,7 +22,7 @@ class Http extends TestCase
     }
     public function testSubmit()
     {
-        $response = $this->http->submit('post','challenge_id');
+        $response = $this->http->submit('post', 'challenge_id');
 
         $data = [
             'challenge_id'=>'challenge_id',
@@ -32,20 +32,20 @@ class Http extends TestCase
 
         $this->assertIsArray($response);
 
-        $this->assertArrayHasKey('challenge_id',$response['json']);
+        $this->assertArrayHasKey('challenge_id', $response['json']);
 
-        $this->assertArrayHasKey('secret_key',$response['json']);
+        $this->assertArrayHasKey('secret_key', $response['json']);
 
-        $this->assertArrayHasKey('site_key',$response['json']);
+        $this->assertArrayHasKey('site_key', $response['json']);
 
-        $this->assertCount(3,$response['json']);
+        $this->assertCount(3, $response['json']);
 
-        $this->assertEquals($data,$response['json']);
-
+        $this->assertEquals($data, $response['json']);
     }
-    public function testException(){
+    public function testException()
+    {
         $this->expectException(RequestException::class);
 
-        $this->http->submit('status/404','challenge_id');
+        $this->http->submit('status/404', 'challenge_id');
     }
 }
