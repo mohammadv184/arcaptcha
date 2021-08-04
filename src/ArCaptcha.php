@@ -43,12 +43,12 @@ class ArCaptcha
      * @param string $site_key
      * @param string $secret_key
      */
-    public function __construct(string $site_key , string $secret_key)
+    public function __construct(string $site_key, string $secret_key)
     {
         $this->site_key =$site_key;
         $this->secret_key = $secret_key;
 
-        $this->http = new Http($this->site_key,$this->secret_key,$this->api_base_uri);
+        $this->http = new Http($this->site_key, $this->secret_key, $this->api_base_uri);
     }
 
     /**
@@ -57,7 +57,7 @@ class ArCaptcha
      */
     public function getScript(): string
     {
-        return sprintf('<script src="%s" async defer></script>',$this->script_url);
+        return sprintf('<script src="%s" async defer></script>', $this->script_url);
     }
 
     /**
@@ -66,7 +66,7 @@ class ArCaptcha
      */
     public function getWidget(): string
     {
-        return sprintf('<div class="arcaptcha" data-site-key="%s"></div>',$this->site_key);
+        return sprintf('<div class="arcaptcha" data-site-key="%s"></div>', $this->site_key);
     }
 
     /**
@@ -78,11 +78,10 @@ class ArCaptcha
     public function verify(string $challenge_id):bool
     {
         try {
-            $response = $this->http->submit('challenges/verify',$challenge_id);
-        }catch (GuzzleException $e){
+            $response = $this->http->submit('challenges/verify', $challenge_id);
+        } catch (GuzzleException $e) {
             return false;
         }
         return $response['status'];
     }
-
 }
