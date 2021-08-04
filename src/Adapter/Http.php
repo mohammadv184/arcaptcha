@@ -46,14 +46,14 @@ class Http implements Adapter
 
     /**
      * submit Request
+     * @param string $uri
      * @param string $challenge_id
      * @return array
      * @throws GuzzleException
      */
-    public function submit(string $challenge_id):array
+    public function submit(string $uri,string $challenge_id):array
     {
-
-        $response = $this->client->post('challenges/verify' ,[
+        $response = $this->client->post($uri ,[
             'json'=>[
                 'challenge_id' => $challenge_id,
                 'site_key' => $this->site_key,
