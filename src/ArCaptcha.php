@@ -73,7 +73,6 @@ class ArCaptcha
      * Verify Captcha challenge id
      * @param string $challenge_id
      * @return bool
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function verify(string $challenge_id):bool
     {
@@ -82,6 +81,6 @@ class ArCaptcha
         } catch (GuzzleException $e) {
             return false;
         }
-        return $response['status'];
+        return $response['status']??false;
     }
 }
