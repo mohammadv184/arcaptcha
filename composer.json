@@ -1,0 +1,34 @@
+{
+    "name": "mohammadv184/arcaptcha",
+    "description": "PHP library for ArCaptcha",
+    "keywords": [
+        "captcha",
+        "arcaptcha",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "Mohammad Abbasi",
+            "email": "mohammad.v184@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mohammadv184\\ArCaptcha\\" : "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mohammadv184\\ArCaptcha\\Tests\\" : "tests"
+        }
+    }
+
+}
