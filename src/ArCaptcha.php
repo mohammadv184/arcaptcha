@@ -12,7 +12,7 @@ class ArCaptcha
      * Api Base Uri
      * @var string
      */
-    protected $api_base_uri = 'https://api.arcaptcha.ir/';
+    protected $api_base_uri = 'https://api.arcaptcha.ir/arcaptcha/api/';
 
     /**
      * Script Url
@@ -77,7 +77,7 @@ class ArCaptcha
     public function verify(string $challenge_id):bool
     {
         try {
-            $response = $this->http->submit('challenges/verify', $challenge_id);
+            $response = $this->http->submit('verify', $challenge_id);
         } catch (GuzzleException $e) {
             return false;
         }
