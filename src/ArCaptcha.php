@@ -81,6 +81,6 @@ class ArCaptcha
         } catch (GuzzleException $e) {
             return false;
         }
-        return $response['status']??false;
+        return $response['success']??false;
     }
 }
