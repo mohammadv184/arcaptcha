@@ -21,18 +21,6 @@ class ArCaptcha
     protected $script_url = 'https://widget.arcaptcha.ir/1/api.js';
 
     /**
-     * User Site Key
-     * @var string
-     */
-    protected $site_key;
-
-    /**
-     * User Secret Key
-     * @var string
-     */
-    protected $secret_key;
-
-    /**
      * Http Adapter
      * @var Http
      */
@@ -43,11 +31,8 @@ class ArCaptcha
      * @param string $site_key
      * @param string $secret_key
      */
-    public function __construct(string $site_key, string $secret_key)
+    public function __construct(protected string $site_key, protected string $secret_key)
     {
-        $this->site_key =$site_key;
-        $this->secret_key = $secret_key;
-
         $this->http = new Http($this->site_key, $this->secret_key, $this->api_base_uri);
     }
 
